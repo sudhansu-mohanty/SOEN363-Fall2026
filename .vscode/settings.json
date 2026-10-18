@@ -1,0 +1,9 @@
+{
+  "sqltools.connections": [
+    {
+      "name": "Assignment1",
+      "driver": "SQLite",
+      "database": "C:\\Users\\sudha\\uni\\SOEN363\\SOEN363-Fall2026\\Assignments\\Assignment1\\assignment1.db"
+    }
+  ]
+}

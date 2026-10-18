@@ -1,0 +1,61 @@
+================================================================================
+SOEN 363 - ASSIGNMENT 1: TASK 2 ANALYTICAL QUERIES
+================================================================================
+
+GENERAL RULES & CALCULATION GUIDELINES:
+--------------------------------------------------------------------------------
+1. COMPLETED ORDERS: Include ONLY Completed orders (status = 'Completed') for all
+   purchases, spending, sales, and ratings, unless explicitly stated otherwise.
+2. ITEM SPENDING FORMULA: Item amount = quantity * unit_price (no taxes or shipping).
+3. RATINGS: Missing ratings are SQL NULL (not 0). SQL AVG ignores NULL values.
+   Rating averages are NOT weighted by quantity.
+4. CALENDAR DATES: Calendar year 2026 means 2026-01-01 through 2026-12-31.
+   Fall 2026 means 2026-09-01 through 2026-11-30, inclusive.
+5. ROUNDING: Round requested averages/totals to two decimal places.
+
+================================================================================
+TASK 2 QUESTIONS (1 to 20):
+================================================================================
+
+1. List the customer IDs of customers who registered in "2026" and live in "Montreal".
+
+2. How many products belong to the Electronics category?
+
+3. The minimum price of the products in the Sports category.
+
+4. How many distinct customers purchased a USB-C Hub in completed orders?
+   (distinct customers means if a customer buys "USB-C Hub" twice, only one time will be counted)
+
+5. How many distinct products supplied by TechSource were purchased in completed orders during calendar year 2026?
+
+6. How many completed orders did Diana Lee place during calendar year 2025?
+
+7. List all distinct dates on which SQL Handbook was purchased in completed orders, in chronological order.
+   (Chronological order means arranging events in the order they happened, from earliest to latest.)
+
+8. What is the average non-null rating for Yoga Mat in completed orders? Round to two decimal places.
+
+9. What is the average non-null rating for products supplied by HomePlus in completed orders?
+
+10. What is Bob Smith's total spending across all completed orders? Round to two decimal places.
+
+11. Calculate the average total spending of customers who purchased at least one Books product in a completed order. For each qualifying customer, first total all completed purchases across all categories and dates; then average these customer totals. Round to two decimal places.
+
+12. What is the average non-null rating for Electronics products in completed orders placed in September 2026? Round to two decimal places.
+
+13. What is the average non-null rating submitted on completed orders by customers who registered in 2024? Round to two decimal places.
+
+14. List the distinct customer IDs of customers who purchased Notebook Set in completed orders, in ascending order.
+
+15. List the distinct product names purchased in completed orders during Fall 2026, ordered alphabetically.
+
+16. How many distinct customers gave a Wireless Mouse rating below 4 on a completed order?
+
+17. List the IDs and names of all products supplied by BookWorld, ordered by product ID, whether or not they have been purchased.
+
+18. List the distinct product names appearing in any George White order that are supplied by TechSource. Include all order statuses and order alphabetically.
+
+19. What is the average non-null rating for Electronics or Home products in completed orders? Round to two decimal places.
+
+20. What is the total number of units of Books or Stationery products sold in completed orders?
+```[cite: 1]
