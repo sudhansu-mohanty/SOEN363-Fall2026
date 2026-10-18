@@ -58,3 +58,34 @@ FROM Suppliers s
 WHERE s.supplier_name = 'HomePlus'
     AND o.status = 'Completed';
 -- query 10
+SELECT ROUND(SUM(oi.quantity * oi.unit_price), 2) AS Bob_Smith_Total_Expenditure
+FROM Customers c
+    JOIN Orders o ON c.customer_id = o.customer_id
+    JOIN OrderItems oi ON o.order_id = oi.order_id
+WHERE c.first_name = 'Bob'
+    AND c.last_name = 'Smith' -- query 11
+SELECT ROUND(AVG(customer_spending), 2) AS avg_books_customer_spending
+FROM (
+        SELECT o.customer_id,
+            SUM(oi.quantity * oi.unit_price) AS customer_spending
+        FROM Orders o
+            JOIN OrderItems oi ON o.order_id = oi.order_id
+        WHERE o.status = 'Completed'
+            AND o.customer_id IN (
+                -- Customers who purchased at least one Books product in a completed order
+                SELECT o2.customer_id
+                FROM Orders o2
+                    JOIN OrderItems oi2 ON o2.order_id = oi2.order_id
+                    JOIN Products p ON oi2.product_id = p.product_id
+                WHERE p.category = 'Books'
+                    AND o2.status = 'Completed'
+            )
+        GROUP BY o.customer_id
+    ) -- query 12
+SELECT ROUND(AVG(oi.rating), 2) AS avg_electronics_sept_rating
+FROM Orders o
+    JOIN OrderItems oi ON o.order_id = oi.order_id
+    JOIN Products p ON oi.product_id = p.product_id
+WHERE p.category = 'Electronics'
+    AND o.status = 'Completed'
+    AND o.order_date BETWEEN '2026-09-01' AND '2026-09-30';
