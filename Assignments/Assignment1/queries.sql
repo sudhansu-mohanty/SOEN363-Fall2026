@@ -89,3 +89,66 @@ FROM Orders o
 WHERE p.category = 'Electronics'
     AND o.status = 'Completed'
     AND o.order_date BETWEEN '2026-09-01' AND '2026-09-30';
+-- query 13
+SELECT ROUND(AVG(oi.rating), 2) AS avg_rating_2024_customers
+FROM Customers c
+    JOIN Orders o ON c.customer_id = o.customer_id
+    JOIN OrderItems oi ON o.order_id = oi.order_id
+WHERE c.registration_year = 2024
+    AND o.status = 'Completed';
+-- query 14
+SELECT DISTINCT o.customer_id
+FROM Orders o
+    JOIN OrderItems oi ON o.order_id = oi.order_id
+    JOIN Products p ON oi.product_id = p.product_id
+WHERE p.product_name = 'Notebook Set'
+    AND o.status = 'Completed'
+ORDER BY o.customer_id ASC;
+-- query 15
+SELECT DISTINCT p.product_name
+FROM Orders o
+    JOIN OrderItems oi ON o.order_id = oi.order_id
+    JOIN Products p ON oi.product_id = p.product_id
+WHERE o.status = 'Completed'
+    AND o.order_date BETWEEN '2026-09-01' AND '2026-11-30'
+ORDER BY p.product_name ASC;
+-- query 16
+SELECT COUNT(DISTINCT o.customer_id) AS low_rating_customers
+FROM Orders o
+    JOIN OrderItems oi ON o.order_id = oi.order_id
+    JOIN Products p ON oi.product_id = p.product_id
+WHERE p.product_name = 'Wireless Mouse'
+    AND oi.rating < 4
+    AND o.status = 'Completed';
+-- query 17
+SELECT p.product_id,
+    p.product_name
+FROM Suppliers s
+    JOIN Products p ON s.supplier_id = p.supplier_id
+WHERE s.supplier_name = 'BookWorld'
+ORDER BY p.product_id ASC;
+-- query 18
+SELECT DISTINCT p.product_name
+FROM Customers c
+    JOIN Orders o ON c.customer_id = o.customer_id
+    JOIN OrderItems oi ON o.order_id = oi.order_id
+    JOIN Products p ON oi.product_id = p.product_id
+    JOIN Suppliers s ON p.supplier_id = s.supplier_id
+WHERE c.first_name = 'George'
+    AND c.last_name = 'White'
+    AND s.supplier_name = 'TechSource'
+ORDER BY p.product_name ASC;
+-- query 19
+SELECT ROUND(AVG(oi.rating), 2) AS avg_electronics_home_rating
+FROM Orders o
+    JOIN OrderItems oi ON o.order_id = oi.order_id
+    JOIN Products p ON oi.product_id = p.product_id
+WHERE p.category IN ('Electronics', 'Home')
+    AND o.status = 'Completed';
+-- query 20
+SELECT SUM(oi.quantity) AS total_units_sold
+FROM Orders o
+    JOIN OrderItems oi ON o.order_id = oi.order_id
+    JOIN Products p ON oi.product_id = p.product_id
+WHERE p.category IN ('Books', 'Stationery')
+    AND o.status = 'Completed';
